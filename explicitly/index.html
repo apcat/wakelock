@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WakeLock Test (Explicitly)</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>WakeLock Test (Explicitly)</h1>
+        <p>トグルスイッチで明示的に WakeLock を有効化/無効化します。</p>
+        <a href="../immediately/">/immediately</a>
+
+        <h2>ページ滞在時間</h2>
+        <p id="page-stay-timer" class="timer">00:00:00</p>
+
+        <h2>WakeLock 有効化時間</h2>
+        <p id="wakelock-timer" class="timer">00:00:00</p>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>デバイス情報</h3>
+                <p>OS: <span id="os"></span></p>
+                <p>OS Version: <span id="os-version"></span></p>
+                <p>Browser: <span id="browser"></span></p>
+                <p>Browser Version: <span id="browser-version"></span></p>
+            </div>
+            <div class="info-box">
+                <h3>WakeLock API</h3>
+                <p>サポート状況: <span id="wakelock-support"></span></p>
+                <p>現在の状態: <span id="wakelock-status">無効</span></p>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="wakelock-toggle">
+                    <label for="wakelock-toggle"></label>
+                    <span>WakeLockを有効にする</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
