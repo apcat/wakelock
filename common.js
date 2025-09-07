@@ -23,6 +23,7 @@ export class Timer {
         this.element = element;
         this.seconds = 0;
         this.intervalId = null;
+        this.started = false;
     }
 
     start() {
@@ -31,6 +32,7 @@ export class Timer {
             this.seconds++;
             this.element.textContent = formatTime(this.seconds);
         }, 1000);
+        this.started = true;
     }
 
     stop() {
@@ -42,6 +44,7 @@ export class Timer {
         this.stop();
         this.seconds = 0;
         this.element.textContent = formatTime(0);
+        this.started = false;
     }
 }
 
@@ -130,7 +133,6 @@ export function displayError(error) {
 export function setupVisibilityHandler(timers, onVisible) {
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
-            timers.forEach(timer => timer.start());
             onVisible?.();
         } else {
             timers.forEach(timer => timer.stop());

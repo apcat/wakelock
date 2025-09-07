@@ -18,7 +18,7 @@ const requestWakeLock = async () => {
         wakeLock = await navigator.wakeLock.request('screen');
         statusEl.textContent = '有効';
         statusEl.style.color = 'green';
-        wakelockTimer.start();
+        if (!wakelockTimer.started) wakelockTimer.start();
 
         wakeLock.addEventListener('release', () => {
             // OSなどによって外部からリリースされた場合
