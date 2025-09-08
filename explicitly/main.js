@@ -36,7 +36,6 @@ const requestWakeLock = async () => {
         statusEl.style.color = 'red';
         toggle.checked = false; // 取得に失敗したらトグルをOFFに戻す
         wakeLock = null;
-        localStorage.removeItem(WAKELOCK_STORAGE_KEY);
     }
 };
 
