@@ -1,4 +1,5 @@
 import { Timer, displayDeviceInfo, displayWakeLockSupport, displayError, setupVisibilityHandler } from '../common.js';
+import QRCode from 'qrcode';
 
 let wakeLock = null;
 const toggle = document.getElementById('wakelock-toggle');
@@ -63,6 +64,13 @@ const handleVisibilityChange = () => {
 const WAKELOCK_STORAGE_KEY = 'wakelock-explicitly-enabled';
 
 document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('qrcode');
+    if (canvas) {
+        QRCode.toCanvas(canvas, window.location.href, { width: 150, margin: 1 }, (error) => {
+            if (error) console.error(error);
+        });
+    }
+
     const pageStayTimerEl = document.getElementById('page-stay-timer');
     const pageStayTimer = new Timer(pageStayTimerEl);
 
