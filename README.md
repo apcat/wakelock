@@ -1,6 +1,6 @@
 # WakeLock
 
-[Screen WakeLock API](https://developer.mozilla.org/ja/docs/Web/API/Screen_Wake_Lock_API) の各デバイスでの挙動を確認するためのリポジトリ。
+[Screen Screen Wake Lock API](https://developer.mozilla.org/ja/docs/Web/API/Screen_Wake_Lock_API) の各デバイスでの挙動を確認するためのリポジトリ。
 
 ## 仕様
 
@@ -21,7 +21,7 @@
     - ブラウザバージョン
   - User-Agent Client Hints API が利用できる場合はそちらを利用する
   - 利用できない場合は User-Agent 文字列から取り出す
-- WakeLock API のサポート状況の表示
+- Screen Wake Lock API のサポート状況の表示
   - API がブラウザでサポートされているかを表示する
 - エラーハンドリング
   - エラー発生時には、エラーメッセージを最下部に表示する
@@ -29,8 +29,8 @@
 
 ### /explicitly
 
-- 明示的にトグルスイッチを有効にすることで WakeLock API を呼び出す。
-- WakeLock API 有効化時間の表示 (hh:mm:ss)
+- 明示的にトグルスイッチを有効にすることで Screen Wake Lock API を呼び出す。
+- WakeLock 有効化時間の表示 (hh:mm:ss)
   - トグルスイッチを有効にしてからの時間のカウントを行う
     - ページ滞在時間の下に表示する
     - ページが閉じられたとき、非アクティブになったときにカウントを停止する
@@ -38,6 +38,6 @@
 
 ### /immediately
 
-- ページが表示されたタイミングで WakeLock API を呼び出す。
-- `/explicitly` とは異なり、WakeLock API 有効化時間の表示は行わない (ページ滞在時間と同等のため)
+- ページが表示されたタイミングで Screen Wake Lock API を呼び出す。
+- `/explicitly` とは異なり、WakeLock 有効化時間の表示は行わない (ページ滞在時間と同等のため)
 - ページが非表示から復帰した場合、WakeLock を自動で再取得する。

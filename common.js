@@ -92,7 +92,7 @@ export async function displayDeviceInfo() {
 }
 
 /**
- * WakeLock APIのサポート状況を表示します。
+ * Screen Wake Lock APIのサポート状況を表示します。
  */
 export function displayWakeLockSupport() {
     const supportEl = document.getElementById('wakelock-support');

@@ -4,21 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WakeLock Test (immediately)</title>
+    <title>Screen Wake Lock API Test (immediately)</title>
     <link rel="stylesheet" href="../common.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>WakeLock Test (immediately)</h1>
+        <h1>Screen Wake Lock API Test (immediately)</h1>
         <p>このページを表示している間、画面のスリープが防止されます。</p>
         <a href="../explicitly/">/explicitly</a>
 
+        <h2>ページ滞在時間</h2>
+        <p id="page-stay-timer" class="timer">00:00:00</p>
+
         <div class="info-grid">
-            <div class="info-box">
-                <h3>ページ滞在時間 (WakeLock有効化時間)</h3>
-                <p id="page-stay-timer" class="timer">00:00:00</p>
-            </div>
             <div class="info-box">
                 <h3>デバイス情報</h3>
                 <p><strong>OS:</strong> <span id="os">...</span></p>
@@ -27,10 +26,9 @@
                 <p><strong>Browser Version:</strong> <span id="browser-version">...</span></p>
             </div>
             <div class="info-box">
-                <h3>WakeLock API サポート</h3>
-                <p id="wakelock-support">確認中...</p>
-                <h3>WakeLock 状態</h3>
-                <p>現在の状態: <strong id="wakelock-status">取得試行中...</strong></p>
+                <h3>Screen Wake Lock API</h3>
+                <p>サポート状況: <span id="wakelock-support">確認中...</span></p>
+                <p>現在の状態: <span id="wakelock-status">取得試行中...</span></p>
             </div>
         </div>
     </div>
