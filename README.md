@@ -1,6 +1,6 @@
 # WakeLock
 
-[Screen Screen Wake Lock API](https://developer.mozilla.org/ja/docs/Web/API/Screen_Wake_Lock_API) の各デバイスでの挙動を確認するためのリポジトリ。
+[Screen Wake Lock API](https://developer.mozilla.org/ja/docs/Web/API/Screen_Wake_Lock_API) の各デバイスでの挙動を確認するためのリポジトリ。
 
 ## 仕様
 
@@ -41,3 +41,10 @@
 - ページが表示されたタイミングで Screen Wake Lock API を呼び出す。
 - `/explicitly` とは異なり、WakeLock 有効化時間の表示は行わない (ページ滞在時間と同等のため)
 - ページが非表示から復帰した場合、WakeLock を自動で再取得する。
+
+## 参考
+
+- [Screen Wake Lock API](https://developer.mozilla.org/ja/docs/Web/API/Screen_Wake_Lock_API)
+- [User Activation API](https://developer.mozilla.org/ja/docs/Web/API/UserActivation)
+- [User-Agent Client Hints API](https://developer.mozilla.org/ja/docs/Web/API/User-Agent_Client_Hints_API)
+- [WebKit Features in Safari 16.4](https://webkit.org/blog/13966/webkit-features-in-safari-16-4/)

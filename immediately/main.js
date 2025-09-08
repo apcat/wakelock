@@ -23,10 +23,10 @@ const requestWakeLock = async () => {
             wakeLock = null;
         });
     } catch (err) {
-        displayError(err);
         statusEl.textContent = `エラー: ${err.message}`;
         statusEl.style.color = 'red';
         wakeLock = null;
+        throw err; // Re-throw the error to be caught by the caller
     }
 };
 
@@ -36,7 +36,7 @@ const handleVisibilityChange = () => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const canvas = document.getElementById('qrcode');
     if (canvas) {
         QRCode.toCanvas(canvas, window.location.href, { width: 150, margin: 1 }, (error) => {
@@ -52,8 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
     displayDeviceInfo();
     displayWakeLockSupport();
 
-    // ページ表示時に即時実行
-    requestWakeLock();
+    try {
+        // Google Chrome はユーザーの操作なしでロックの獲得が可能
+        await requestWakeLock();
+    } catch (err) {
+        // Safari ではユーザーの操作なしでロックを獲得できないため、定期的に User Activation API を用いてロックが取得できるタイミングを伺う
+        console.log('Failed to acquire WakeLock, trying with User Activation API.');
+        if ('userActivation' in navigator) {
+            const intervalId = setInterval(async () => {
+                if (navigator.userActivation.hasBeenActive) {
+                    clearInterval(intervalId);
+                    console.log('User has been active, requesting wake lock.');
+                    try {
+                        await requestWakeLock();
+                    } catch (e) {
+                        displayError(err);
+                        console.error('Failed to acquire WakeLock even after user activation.');
+                    }
+                } else {
+                    console.log('User has not been active yet.');
+                }
+            }, 1000);
+        }
+    }
 
     setupVisibilityHandler([pageStayTimer], handleVisibilityChange);
 });
