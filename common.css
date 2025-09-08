@@ -139,3 +139,15 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+footer a {
+    display: inline;
+    margin: 0;
+}
