@@ -60,6 +60,8 @@ const handleVisibilityChange = () => {
     }
 };
 
+const WAKELOCK_STORAGE_KEY = 'wakelock-explicitly-enabled';
+
 document.addEventListener('DOMContentLoaded', () => {
     const pageStayTimerEl = document.getElementById('page-stay-timer');
     const pageStayTimer = new Timer(pageStayTimerEl);
@@ -69,7 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
     displayDeviceInfo();
     displayWakeLockSupport();
 
+    // Restore wakelock state from localStorage
+    const savedState = localStorage.getItem(WAKELOCK_STORAGE_KEY);
+    if (savedState === 'true') {
+        toggle.checked = true;
+        requestWakeLock();
+    }
+
     toggle.addEventListener('change', (event) => {
+        localStorage.setItem(WAKELOCK_STORAGE_KEY, event.target.checked);
         if (event.target.checked) {
             requestWakeLock();
         } else {
