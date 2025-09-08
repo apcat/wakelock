@@ -70,7 +70,7 @@ export async function displayDeviceInfo() {
             osEl.textContent = uaData.platform || 'N/A';
             osVersionEl.textContent = uaData.platformVersion || 'N/A';
 
-            const brand = uaData.fullVersionList.find(b => b.brand !== "Not=A?Brand" && b.brand !== "Chromium");
+            const brand = uaData.fullVersionList.reverse()[0];
             browserEl.textContent = brand?.brand || uaData.brands[0]?.brand || 'N/A';
             browserVersionEl.textContent = brand?.version || uaData.brands[0]?.version || 'N/A';
             return;
